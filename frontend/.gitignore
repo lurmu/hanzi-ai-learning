@@ -1,0 +1,14 @@
+/.cache
+/.git
+/.gitignore
+/.next
+/.nuxt
+/.cache/
+/.vuepress/dist/
+/.serverless/
+/.fusebox/
+/.dynamodb/
+/.tern-port
+.DS_Store
+*.pem
+.pnp.js

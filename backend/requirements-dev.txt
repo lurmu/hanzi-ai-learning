@@ -1,0 +1,4 @@
+"""Development requirements"""
+-r requirements.txt
+ipython==8.17.2
+jupyter==1.0.0
