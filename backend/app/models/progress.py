@@ -16,7 +16,7 @@ class Progress(Base):
     total_study_time = Column(Integer, default=0)  # seconds
     current_level = Column(Integer, default=1)
     next_recommended_hanzi = Column(String, nullable=True)
-    stats = Column(JSON, default={})  # Additional stats
+    stats = Column(JSON, default={})
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     created_at = Column(DateTime, default=datetime.utcnow)
 
