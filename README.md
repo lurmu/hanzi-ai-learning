@@ -75,7 +75,7 @@ cp .env.example .env
 alembic upgrade head
 
 # 启动服务
-uv run uvicorn app.main:app --reload
+uvicorn app.main:app --reload
 ```
 
 #### 前端
@@ -100,11 +100,11 @@ npm start
 - `POST /api/v1/users/login` - 用户登录
 - `GET /api/v1/hanzi/{id}` - 获取汉字信息
 - `POST /api/v1/learning/record` - 记录学习数据
-- `GET /api/v1/learning/stats` - 获取学习统计
+- `GET /api/v1/learning/stats/{user_id}` - 获取学习统计
 - `POST /api/v1/ai/analyze` - AI分析学习进度
-- `GET /api/v1/ai/recommendations` - 获取AI推荐
+- `GET /api/v1/ai/recommendations/{user_id}` - 获取AI推荐
 
-## 📖 项目结构
+## 📂 项目结构
 
 ### Backend (FastAPI)
 
@@ -144,15 +144,15 @@ frontend/
 │   ├── pages/           # 页面
 │   ├── hooks/           # 自定义hooks
 │   ├── services/        # API服务
-│   ├── store/           # Zustand状态管理
-│   ├── styles/          # 样式
+│   ├── store/           # 状态管理
+│   ├── styles/          # 样式文件
 │   └── App.tsx          # 应用入口
 ├── public/              # 静态资源
 ├── package.json
 └── Dockerfile
 ```
 
-## 🔐 环境变量
+## 🔧 环境变量
 
 ### Backend (.env)
 
@@ -167,7 +167,7 @@ DEEPSEEK_API_KEY=your_deepseek_api_key
 DEEPSEEK_API_URL=https://api.deepseek.com/v1
 DEEPSEEK_MODEL=deepseek-chat
 
-# JWT
+# JWT安全
 SECRET_KEY=your_secret_key_here
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
@@ -183,7 +183,7 @@ REACT_APP_API_URL=http://localhost:8000
 REACT_APP_ENV=development
 ```
 
-## 📋 学习路径
+## 🎯 学习路径
 
 1. **第一阶段**: 项目设置 + 基础API
 2. **第二阶段**: 前端UI + 学习记录
