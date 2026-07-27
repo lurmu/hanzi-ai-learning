@@ -1,0 +1,34 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Global Styles */
+body {
+  @apply font-sans antialiased;
+}
+
+/* Eye-friendly mode */
+body.eye-friendly {
+  @apply bg-blue-50 text-gray-800;
+}
+
+body.eye-friendly input,
+body.eye-friendly button {
+  @apply bg-blue-50;
+}
+
+/* Smooth animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
