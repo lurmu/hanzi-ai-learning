@@ -62,3 +62,7 @@ logs/
 # Temp
 tmp/
 temp/
+
+# OS
+.DS_Store
+Thumbs.db

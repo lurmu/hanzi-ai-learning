@@ -4,9 +4,9 @@
 
 ## ✨ 功能特性
 
-- 🧒 儿童友好的学习界面
+- 👶 儿童友好的学习界面
 - 🤖 基于DeepSeek API的AI智能分析
-- 📊 学习进度实时追踪
+- 📊 学习进度实时跟踪
 - 🎯 个性化学习推荐
 - 🔄 自适应难度调整
 - 👨‍👩‍👧 家长监控面板
@@ -30,7 +30,7 @@ hanzi-ai-learning/
 - Docker & Docker Compose
 - Python 3.11+
 - Node.js 18+
-- DeepSeek API Key
+- DeepSeek API Key（[申请地址](https://www.deepseek.com)）
 
 ### 使用Docker启动（推荐）
 
@@ -96,43 +96,43 @@ npm start
 
 ### 主要端点
 
-- `POST /api/users/register` - 注册用户
-- `POST /api/users/login` - 用户登录
-- `GET /api/hanzi/{id}` - 获取汉字信息
-- `POST /api/learning/record` - 记录学习数据
-- `GET /api/learning/analysis` - 获取学习分析
-- `GET /api/learning/recommendations` - 获取AI推荐
-- `POST /api/ai/analyze` - AI分析学习进度
+- `POST /api/v1/users/register` - 用户注册
+- `POST /api/v1/users/login` - 用户登录
+- `GET /api/v1/hanzi/{id}` - 获取汉字信息
+- `POST /api/v1/learning/record` - 记录学习数据
+- `GET /api/v1/learning/stats` - 获取学习统计
+- `POST /api/v1/ai/analyze` - AI分析学习进度
+- `GET /api/v1/ai/recommendations` - 获取AI推荐
 
-## 🗂️ 目录结构
+## 📖 项目结构
 
 ### Backend (FastAPI)
 
 ```
 backend/
 ├── app/
-│   ├── models/          # 数据库模型
-│   ├── schemas/         # Pydantic模式
+│   ├── models/          # SQLAlchemy数据库模型
+│   ├── schemas/         # Pydantic验证模型
 │   ├── api/
-│   │   ├── users.py     # 用户管理
-│   │   ├── hanzi.py     # 汉字库
-│   │   ├── learning.py  # 学习记录
-│   │   └── ai.py        # AI分析
+│   │   ├── users.py     # 用户管理API
+│   │   ├── hanzi.py     # 汉字库API
+│   │   ├── learning.py  # 学习记录API
+│   │   └── ai.py        # AI分析API
 │   ├── services/
-│   │   ├── ai_service.py       # AI服务
-│   │   ├── recommendation.py   # 推荐引擎
-│   │   └── analysis.py         # 分析引擎
-│   ├── db/
-│   │   └── database.py  # 数据库配置
+│   │   ├── ai_service.py        # DeepSeek AI服务
+│   │   ├── recommendation.py    # 推荐引擎
+│   │   └── analysis.py          # 分析引擎
 │   ├── core/
 │   │   ├── config.py    # 配置管理
 │   │   └── security.py  # 安全认证
+│   ├── db/
+│   │   └── database.py  # 数据库连接
 │   └── main.py          # 应用入口
 ├── migrations/          # 数据库迁移
 ├── tests/               # 单元测试
-├── requirements.txt     # 依赖
+├── requirements.txt     # Python依赖
 ├── .env.example         # 环境变量示例
-└── Dockerfile
+└── Dockerfile           # Docker镜像配置
 ```
 
 ### Frontend (React)
@@ -146,8 +146,8 @@ frontend/
 │   ├── services/        # API服务
 │   ├── store/           # Zustand状态管理
 │   ├── styles/          # 样式
-│   └── App.tsx
-├── public/              # 静态文件
+│   └── App.tsx          # 应用入口
+├── public/              # 静态资源
 ├── package.json
 └── Dockerfile
 ```
@@ -180,16 +180,49 @@ CORS_ORIGINS=["http://localhost:3000", "http://localhost"]
 
 ```env
 REACT_APP_API_URL=http://localhost:8000
-REACT_APP_WS_URL=ws://localhost:8000
+REACT_APP_ENV=development
 ```
 
-## 📖 学习路径
+## 📋 学习路径
 
 1. **第一阶段**: 项目设置 + 基础API
 2. **第二阶段**: 前端UI + 学习记录
 3. **第三阶段**: DeepSeek AI集成
 4. **第四阶段**: 分析引擎 + 推荐系统
 5. **第五阶段**: 家长面板 + 报告生成
+6. **第六阶段**: 移动端适配 + 优化
+
+## 🧪 测试
+
+```bash
+# 后端测试
+cd backend
+pytest
+
+# 前端测试
+cd frontend
+npm test
+```
+
+## 🐳 Docker命令
+
+```bash
+# 查看运行状态
+docker-compose ps
+
+# 查看日志
+docker-compose logs -f backend
+docker-compose logs -f frontend
+
+# 停止服务
+docker-compose down
+
+# 重启服务
+docker-compose restart
+
+# 清理所有
+docker-compose down -v
+```
 
 ## 🤝 贡献
 
@@ -207,4 +240,4 @@ MIT License
 ## 🙏 致谢
 
 - [hanzi-study](https://github.com/dhjz/hanzi-study) - 汉字数据灵感
-- [DeepSeek API](https://www.deepseek.com) - AI分析引擎
+- [DeepSeek](https://www.deepseek.com) - AI分析引擎
